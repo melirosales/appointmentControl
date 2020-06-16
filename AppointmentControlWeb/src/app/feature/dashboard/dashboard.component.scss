@@ -1,0 +1,28 @@
+@import "../../variable.scss";
+@import "../../../styles.scss";
+.button {
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    color: $white;
+    background-color: $primaryColor;
+    border: 1px solid rgba(43, 43, 43, 0.8) !important;
+}
+
+.search-icon {
+    font-size: 25vh;
+    display: block;
+    color: $primaryColor;
+    text-align: center;
+    margin: auto;
+}
+
+.btn-eye {
+    color: $primaryColor;
+    border: transparent;
+}
+
+.btn-eye:hover {
+    color: #1f4e78b0;
+    border: transparent;
+}

@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-center">
+    <div class="jumbotron jumbotron-fluid p-5 col-md-6">
+        <div class="row">
+            <label class="gbl-title-primary text-center d-block">Search Patient</label>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <input class="form-control" (keyup)="onSearchPatient($event.target.value)" [(ngModel)]="searchPatient" type="text" formControlName="txtSearchPatient" placeholder="" aria-label="Enter name or identity" />
+            </div>
+        </div>
+        <div *ngIf="listPatient.length>0" class="row p-3">
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="width: 70%;">Name</th>
+                            <th style="width: 20%;">Identity</th>
+                            <th style="width: 10%;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let entry of listPatient;">
+                            <td>{{entry.Name}} {{entry.Last_Name}}</td>
+                            <td>{{entry.Identity}}</td>
+                            <td><button class="btn-eye" (click)="goToViewPatient(entry)"><span
+                                        class="material-icons ">
+                                        remove_red_eye
+                                    </span></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

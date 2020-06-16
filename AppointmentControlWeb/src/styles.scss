@@ -1,0 +1,213 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./app/variable.scss";
+body {
+    margin: 0;
+}
+
+button:focus {
+    outline: 0ch !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(43, 43, 43, 0.8) !important;
+}
+
+.form-control:focus {
+    border-color: #dadada !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+//////////////////////////////////////////////////////////STYLE ERROR REQUIRED/////////////////////////////////////////////////////////
+.alert-error-required {
+    font-family: $roboto-regular;
+    font-size: $font-size-small;
+    color: $red;
+}
+
+.form-control-error {
+    box-shadow: 0 0 18px $red;
+}
+
+//////////////////////////////////////////////////////////STYLE ERROR REQUIRED/////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////STYLE GLOBAL FONTS/////////////////////////////////////////////////////////
+.gbl-title-primary {
+    font-family: $roboto-regular;
+    color: $black;
+    font-size: $font-size-medium-big;
+}
+
+.gbl-title-secondary {
+    font-family: $roboto-regular;
+    color: $black;
+    font-size: $font-size-medium;
+}
+
+.gbl-tabs-history {
+    font-family: $roboto-regular;
+    color: $black;
+    font-size: $font-size-medium-small;
+}
+
+//////////////////////////////////////////////////////////STYLE GLOBAL FONTS/////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////STYLE FOOTER/////////////////////////////////////////////////////////
+.gbl-footer {
+    background-color: $primaryColor;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.gbl-footer-font {
+    font-family: $roboto-regular;
+    font-size: $font-size-medium-small;
+    color: $white;
+}
+
+//////////////////////////////////////////////////////////STYLE FOOTER/////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////STYLE MODAL GENERALS/////////////////////////////////////////////////////////
+.gbl-header-feedback-modal {
+    background-color: $primaryColor;
+    min-width: 30.8rem;
+    max-width: 30.8rem;
+    min-height: 45px;
+    max-height: 45px;
+    margin-bottom: 1.5rem;
+}
+
+.gbl-header-error-modal {
+    background-color: $white;
+    min-width: 30.8rem;
+    max-width: 30.8rem;
+    min-height: 45px;
+    max-height: 45px;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(43, 43, 43, 0.8);
+}
+
+.gbl-button-save {
+    background-color: $secondaryLightColor;
+    font-family: $roboto-bold;
+    font-size: $font-size-small;
+    border: 1px solid rgba(43, 43, 43, 0.8);
+    border-radius: 2px;
+    color: $white;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.gbl-button-delete {
+    background-color: $red;
+    font-family: $roboto-bold;
+    font-size: $font-size-small;
+    border: 1px solid rgba(43, 43, 43, 0.8);
+    border-radius: 2px;
+    color: $white;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.gbl-font-feedback-modal {
+    font-family: $roboto-regular;
+    color: $black;
+    font-size: $font-size-small;
+    text-align: center;
+}
+
+//////////////////////////////////////////////////////////STYLE MODAL GENERALS/////////////////////////////////////////////////////////
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: $primaryColor;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: $primaryColor;
+}
+
+.mat-slide-toggle.mat-checked .mat-ripple-element {
+    background-color: $primaryColor;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: $primaryColor !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: $primaryColor !important;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: $primaryColor !important;
+}
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+    background-color: $primaryColor !important;
+}
+
+//////////////////////////////////////////////////////////STYLE MODALS RESPONSIVE/////////////////////////////////////////////////////////
+.modal-confirm {
+    min-width: 478px;
+    max-width: 478px !important;
+    max-height: 248px;
+    min-height: 232px;
+    @media (max-width: 580px) {
+        min-width: 339px;
+        max-width: 343px !important;
+        max-height: 248px;
+        min-height: 232px;
+    }
+    @media (max-width:380px) {
+        min-width: 339px;
+        max-width: 343px !important;
+        max-height: 248px;
+        min-height: 232px;
+    }
+}
+
+.modal-error {
+    min-width: 478px;
+    max-width: 478px !important;
+    max-height: 248px;
+    min-height: 232px;
+    @media (max-width: 580px) {
+        min-width: 339px;
+        max-width: 343px !important;
+        max-height: 248px;
+        min-height: 232px;
+    }
+    @media (max-width:380px) {
+        min-width: 339px;
+        max-width: 343px !important;
+        max-height: 248px;
+        min-height: 232px;
+    }
+}
+
+.modal-success {
+    min-width: 478px;
+    max-width: 478px !important;
+    max-height: 248px;
+    min-height: 232px;
+    @media (max-width: 580px) {
+        min-width: 339px;
+        max-width: 343px !important;
+        max-height: 248px;
+        min-height: 232px;
+    }
+    @media (max-width:380px) {
+        min-width: 339px;
+        max-width: 343px !important;
+        max-height: 248px;
+        min-height: 232px;
+    }
+}
+
+//////////////////////////////////////////////////////////STYLE MODALS RESPONSIVE/////////////////////////////////////////////////////////
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

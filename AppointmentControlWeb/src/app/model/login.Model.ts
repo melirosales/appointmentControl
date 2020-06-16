@@ -1,0 +1,71 @@
+ 
+export class LoginModel {
+  Password: string;
+  userName: string;
+  user_Name: string;
+  client_Id: string;
+  uriStartPage: string;
+  apiServiceBaseUri: string;
+  es_temporal: string;
+  access_token: string;
+  tokenClient: string;
+  value: string;
+  error: string;
+  error_description: string;
+  idUser: string;
+  role: string;
+  token_type: string;
+  refresh_token: string;
+  pK_gbl_mtr_user: number;
+  name: string;
+  email: string;
+  Posee_Autenticacion: string;
+  roleList: any;
+  Metodo_Autenticacion: any;
+  Password_Autenticacion: string;
+  Usuario_Autenticacion: string;
+  Fk_Sistema: string;
+  Username: string;
+  idRole: string;
+  OpcionUser: string;
+  Contrasena: string;
+  ContrasenaActual: string;
+  pk_Usuario: number;
+  user: string;
+  userInfo: any;
+
+  constructor() {
+    this.pK_gbl_mtr_user = 0;
+    this.Password = '';
+    this.userName = '';
+    this.uriStartPage = '';
+    this.apiServiceBaseUri = '';
+    this.es_temporal = '';
+    this.access_token = '';
+    this.tokenClient = '';
+    this.value = '';
+    this.error = '';
+    this.error_description = '';
+    this.idUser = '';
+    this.role = '';
+    this.token_type = '';
+    this.refresh_token = '';
+    this.Posee_Autenticacion = '';
+    this.name = '';
+    this.email = '';
+    this.Password_Autenticacion = '';
+    this.Metodo_Autenticacion = '';
+    this.Usuario_Autenticacion = '';
+    this.Fk_Sistema = '';
+    this.Username = '';
+    this.idRole = '';
+    this.OpcionUser = '';
+    this.Contrasena = '';
+    this.ContrasenaActual = '';
+    this.pk_Usuario = 0;
+    this.user = '';
+    this.userInfo = "";
+    this.client_Id = "";
+    this.user_Name = '';
+  }
+}

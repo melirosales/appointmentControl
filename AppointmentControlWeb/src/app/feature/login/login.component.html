@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="mt-4 m-t-9">
+                    <span class="material-icons login-icon">
+                  verified_user
+                  </span>
+                </div>
+                <label class="gbl-title-primary text-center d-block">Welcome to appointment system</label>
+                <form class="login-form " [formGroup]="loginForm" novalidate>
+
+                    <div class=" login-container p-3">
+                        <div class="row">
+                            <div class="offset-md-1 col-md-10">
+                                <div class="form-group">
+                                    <label class="login-label-form" aria-label="User">User</label>
+                                    <input class="form-control login-input" [ngClass]="{'is-invalid': submitted && loginForm.get('username').errors}" type="text" formControlName="username" placeholder="usuario@correo.com" aria-label="Ingresar nombre de usuario" />
+                                    <div *ngIf="submitted  &&  loginForm.get('username').errors" class="invalid-feedback">
+                                        <div *ngIf="loginForm.get('username').errors['required']"> This field is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" offset-md-1 col-md-10">
+                                <div class="form-group login-error">
+                                    <label class="login-label-form" aria-label="Password">Password</label>
+                                    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control login-input" [ngClass]="{'is-invalid login-show-input-password-error': submitted && loginForm.get('password').errors}" formControlName="password"
+                                        placeholder="Password" (keyup.enter)="login()" aria-label="Enter the password">
+                                    <mat-icon matSuffix (click)="hide = !hide" class="login-show-password" [ngClass]="{'login-show-password-error': submitted && loginForm.get('password').errors}">
+                                        {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    <div *ngIf="submitted  &&  loginForm.get('password').errors" class="invalid-feedback">
+                                        <div *ngIf="loginForm.get('password').errors['required']"> This field is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" (click)="login()" class="login-button w-100 mt-3">
+                LOGIN
+              </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

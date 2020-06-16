@@ -1,0 +1,41 @@
+@import "../../variable.scss";
+@import "../../../styles.scss";
+.save-button {
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    color: $white;
+    background-color: $primaryColor;
+    border: 1px solid rgba(43, 43, 43, 0.8) !important;
+}
+
+.btn-date {
+    color: $primaryColor;
+    border: transparent;
+}
+
+.btn-date:hover {
+    color: #1f4e78b0;
+    border: transparent;
+}
+
+::ng-deep .timepicker__header {
+    background-color: $primaryColor !important;
+}
+
+::ng-deep .clock-face__number>span.active {
+    color: $primaryColor !important;
+}
+
+::ng-deep .timepicker-button {
+    color: $primaryColor !important;
+}
+
+::ng-deep .clock-face__number>span.active {
+    background-color: $primaryColor !important;
+    color: white !important;
+}
+
+::ng-deep .clock-face__clock-hand {
+    background-color: $primaryColor !important;
+}

@@ -1,0 +1,49 @@
+@import '../../../variable.scss';
+
+::ng-deep .mat-dialog-container {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  padding: 0.0px;
+}
+
+.icon-question {
+  background-image: $img-question;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  height: 2rem;
+  width: 2rem;
+}
+
+.modal-success-title-color {
+  color: $white !important;
+}
+
+@media (max-width:580px) {
+  .gbl-button-save {
+    padding: 0.5rem;
+  }
+
+  .gbl-button-delete {
+    padding: 0.5rem;
+  }
+
+  .gbl-header-feedback-modal{
+    min-width: 4.8rem;
+    max-width: 22.4rem;
+  }
+}
+
+@media (max-width:380px) {
+  .gbl-button-save {
+    padding: 0.5rem;
+  }
+
+  .gbl-button-delete {
+    padding: 0.5rem;
+  }
+
+  .gbl-header-feedback-modal{
+    min-width: 4.8rem;
+    max-width: 22.4rem;
+  }
+}
