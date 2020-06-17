@@ -45,30 +45,7 @@ namespace appointmentControl.Backend.BussinessLogic
             }
         }
 
-        public async virtual Task<Message> List(Message message)
-        {
-            try
-            {
-                var resultMessage = new Model.Message();
-                var model = message.DeSerializeObject<Model.User>();
-                using (var repository = new User_Repository(message.Connection))
-                {
-                    var returnObject = await repository.List(model);
-                    resultMessage.Status = Status.Success;
-                    resultMessage.Result = "Proceso efectuado satisfactoriamente...";
-                    resultMessage.MessageInfo = returnObject.SerializeObject();
-                    return resultMessage;
-                }
-            }
-            catch (Exception ex)
-            {
-                var resultMessage = new Model.Message();
-                resultMessage.Status = Status.Failed;
-                resultMessage.Result = string.Format("{0}", ex.Message);
-                resultMessage.MessageInfo = string.Empty;
-                return resultMessage;
-            }
-        }
+     
 
         public async virtual Task<Message> Get(Message message)
         {
@@ -105,55 +82,23 @@ namespace appointmentControl.Backend.BussinessLogic
             }
         }
 
-        public async virtual Task<Message> Save(Message message)
+        public Task<Message> List(Message message)
         {
-            try
-            {
-                var resultMessage = new Message();
-                var model = message.DeSerializeObject<Model.User>();
-                using (var repository = new User_Repository(message.Connection))
-                {
-                    await repository.Save(model);
-                    resultMessage.Status = Status.Success;
-                    resultMessage.Result = "Proceso efectuado satisfactoriamente...";
-                    resultMessage.MessageInfo = String.Empty;
-                    return resultMessage;
-                }
-            }
-            catch (Exception ex)
-            {
-                var resultMessage = new Message();
-                resultMessage.Status = Status.Failed;
-                resultMessage.Result = string.Format("{0}", ex.Message);
-                resultMessage.MessageInfo = string.Empty;
-                return resultMessage;
-            }
+            throw new NotImplementedException();
         }
 
-        public async virtual Task<Model.Message> Delete(Message message)
+        public Task<Message> Save(Message message)
         {
-            try
-            {
-                var resultMessage = new Message();
-                var model = message.DeSerializeObject<Model.User>();
-                using (var repository = new User_Repository(message.Connection))
-                {
-                    await repository.Delete(model);
-                    resultMessage.Status = Status.Success;
-                    resultMessage.Result = "Proceso efectuado satisfactoriamente...";
-                    resultMessage.MessageInfo = String.Empty;
-                    return resultMessage;
-                }
-            }
-            catch (Exception ex)
-            {
-                var resultMessage = new Model.Message();
-                resultMessage.Status = Status.Failed;
-                resultMessage.Result = string.Format("{0}", ex.Message);
-                resultMessage.MessageInfo = string.Empty;
-                return resultMessage;
-            }
+            throw new NotImplementedException();
         }
+
+        public Task<Message> Delete(Message message)
+        {
+            throw new NotImplementedException();
+        }
+
+
+ 
         #endregion
         #region Region [Dispose]
         public void Dispose()
@@ -163,8 +108,7 @@ namespace appointmentControl.Backend.BussinessLogic
         }
         protected virtual void Dispose(bool disposing)
         {
-        }
-        ~User()
+        }        ~User()
         {
             this.Dispose(false);
         }

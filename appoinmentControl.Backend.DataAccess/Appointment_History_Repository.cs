@@ -33,40 +33,15 @@ namespace appointmentControl.Backend.DataAccess.Repository
             {
                 var result = connection.Query<
                     Model.Appointment_History>
-                    ("PA_CON_APPOINTMENT_HISTORY_GET",
+                    ("SP_APPOINTMENT_HISTORY_GET",
                     param: new
-                    {
-                        P_PK_APPOINTMENT_HISTORY = model.Pk_Appointment_History,
-                        P_FK_MEDICAL_SERVICE = model.Fk_Medical_Service,
-                        P_FK_PATIENT = model.Fk_Patient,
-                        P_DATE = model.Date,
-                        P_HOUR = model.Hour,
+                    {  
+                        P_FK_PATIENT = model.Fk_Patient ,
                     },
                     commandType: CommandType.StoredProcedure);
                 return await Task.FromResult<IEnumerable<Appointment_History>>(result.ToList());
             }
-        }
-
-        public async Task<Model.Appointment_History> Get(Model.Appointment_History model)
-        {
-            using (var connection = new SqlConnection(ConnectionString))
-            {
-                var result = connection.Query<
-                    appointmentControl.Backend.Model.Appointment_History>
-                    ("PA_CON_APPOINTMENT_HISTORY_GET",
-                    param: new
-                    {
-                        P_PK_APPOINTMENT_HISTORY = model.Pk_Appointment_History,
-                        P_FK_MEDICAL_SERVICE = model.Fk_Medical_Service,
-                        P_FK_PATIENT = model.Fk_Patient,
-                        P_DATE = model.Date,
-                        P_HOUR = model.Hour,
-                    },
-                    commandType: CommandType.StoredProcedure).FirstOrDefault();
-                return await Task.FromResult<Model.Appointment_History>(result);
-            }
-        }
-
+        } 
         public async Task Save(Model.Appointment_History model)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -81,23 +56,11 @@ namespace appointmentControl.Backend.DataAccess.Repository
                         P_FK_PATIENT = model.Fk_Patient,
                         P_DATE = model.Date,
                         P_HOUR = model.Hour,
+                        P_OPTION=model.Option
                     },
                     commandType: CommandType.StoredProcedure);
             }
-        }
-        public async Task Delete(Model.Appointment_History model)
-        {
-            using (var connection = new SqlConnection(ConnectionString))
-            {
-                await connection.ExecuteAsync(
-                sql: "PA_APPOINTMENT_HISTORY_DELETE",
-                param: new
-                {
-                    P_PK_APPOINTMENT_HISTORY = model.Pk_Appointment_History
-                },
-                commandType: CommandType.StoredProcedure);
-            }
-        }
+        } 
         #endregion
         #region Region [Dispose]
         public void Dispose()

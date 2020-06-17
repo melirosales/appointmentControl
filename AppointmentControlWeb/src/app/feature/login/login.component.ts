@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalConfirmComponent } from '@shared/modal/modal-confirm/modal-confirm.component';
+import { MatDialog } from '@angular/material/dialog'; 
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AuthenticationService } from '@core/service/authentication.service';
 import { Router } from '@angular/router';
 import { LoginModel } from '@app/model/login.Model';
+import { CommonService } from '@shared/services/common-service.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
   constructor(private form: FormBuilder,
     private matDialog: MatDialog,
     private _authService: AuthenticationService,
-    private _router: Router
+    private _router: Router,
+    private _commonService: CommonService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
 
   //#region methods
  
+  get formVal() { return this.loginForm.controls; }
   login() {
     if (this.loginForm.invalid) {
       this.submitted = true;
@@ -52,36 +54,31 @@ export class LoginComponent implements OnInit {
       this._authService.loginLocalApi(dataLogin).pipe(takeUntil(this.unsubscribe$)).subscribe(
         data => {
           debugger
-          this._router.navigate(["dashboard"])
+          var user={
+            "User_Name":this.formVal.username.value,
+            "Password":this.formVal.password.value,
+          }
+
+          this._commonService._loginUser(user).pipe(takeUntil(this.unsubscribe$)).subscribe(
+            data => {
+              debugger
+              if(data.Pk_User>0){
+                this._router.navigate(["dashboard"])
+              }else{
+                alert('Verify your password and user name.')
+              }
+            },
+            error => {
+              //this._Model._setLoading(false);
+            }
+          )
+ 
         },
         error => {
           //this._Model._setLoading(false);
         }
       )
     }
-  } 
-  openDialogConfirm() {
-    const datainfo = {
-      labelTitile: 'Información',
-      textDescription: "Revisa tu correo electrónico para continuar con el proceso de recuperación de la contraseña?",
-    };
-    const dialogRef = this.matDialog.open(ModalConfirmComponent, {
-      data: { datainfo },
-      panelClass: 'modal-confirm',
-
-    });
-    const refresh = dialogRef.componentInstance.refreshAccount.subscribe((data) => {
-
-      if (data) {
-      }
-      else {
-      }
-    });
-    dialogRef.afterClosed().subscribe(
-      () => {
-        refresh.unsubscribe();
-      }
-    );
-  }
+  }  
   //#endregion methods
 }

@@ -57,61 +57,7 @@ namespace appointmentControl.Backend.WepApi
             {
                 return StatusCode((int)HttpStatusCode.Ambiguous, new { ex = ex, param = model });
             }
-        }
-        [Route("Get")]
-        [HttpPost]
-        public async Task<IActionResult> Get([FromBody] Model.Medical_Service model)
-        {
-            try
-            {
-                var message = new Message();
-                message.BusinessLogic = configuration.GetValue<string>("AppSettings:BusinessLogic:Medical_Service");
-                message.Connection = configuration.GetValue<string>("ConnectionStrings:appointmentControl");
-                message.Operation = Operation.Get;
-                message.MessageInfo = model.SerializeObject();
-                using (var businessLgic = new DoWorkService())
-                {
-                    var result = await businessLgic.DoWork(message);
-                    if (result.Status == Status.Failed)
-                    {
-                        return BadRequest(result.Result);
-                    }
-                    var resultModel = result.DeSerializeObject<Model.Medical_Service>(); 
-                    return Ok(resultModel);
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.Ambiguous, new { ex = ex, param = model });
-            }
-        }
-        [Route("Save")]
-        [HttpPost]
-        public async Task<IActionResult> Save([FromBody] Model.Medical_Service model)
-        {
-            try
-            {
-                var message = new Message();
-                message.BusinessLogic = configuration.GetValue<string>("AppSettings:BusinessLogic:Medical_Service");
-                message.Connection = configuration.GetValue<string>("ConnectionStrings:appointmentControl");
-                message.Operation = Operation.Save;
-                message.MessageInfo = model.SerializeObject();
-                using (var businessLgic = new DoWorkService())
-                {
-                    var result = await businessLgic.DoWork(message);
-                    if (result.Status == Status.Failed)
-                    {
-                        return BadRequest(result.Result);
-                    }
-                    var resultModel = result.DeSerializeObject<Model.Medical_Service>(); 
-                    return Ok(resultModel);
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.Ambiguous, new { ex = ex, param = model });
-            }
-        }
+        } 
         #endregion Region [Methods]
     }
 }

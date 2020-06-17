@@ -26,12 +26,13 @@ export class DashboardComponent implements OnInit {
     private _router: Router, private _commonService: CommonService) { }
 
   ngOnInit(): void {
+    this.onSearchPatient('',true);
  
   }
 
-  onSearchPatient(filterSearch: string) {
+  onSearchPatient(filterSearch: string,init) {
 
-    if (filterSearch.length >= 1) {
+    if (filterSearch.length >= 1 || init) {
       var patient = {
         "Name": filterSearch,
       }
@@ -59,6 +60,18 @@ export class DashboardComponent implements OnInit {
     this._router.navigate(['view-patient'], navigationExtras);
   }
 
+
+
+  addAppointment(patient:any){
+    
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "Patient": JSON.stringify(patient)
+      },
+      skipLocationChange: true
+    };
+    this._router.navigate(['add-appointment'], navigationExtras);
+  }
 
 
 }

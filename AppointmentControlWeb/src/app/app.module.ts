@@ -15,13 +15,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import {MatSelectModule} from '@angular/material/select';
+import {MatSelectModule} from '@angular/material/select'; 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ViewPatientComponent,
-  
+    ViewPatientComponent, 
   ],
   imports: [
     BrowserModule,

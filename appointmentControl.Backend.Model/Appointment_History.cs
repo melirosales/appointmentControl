@@ -9,12 +9,18 @@ namespace appointmentControl.Backend.Model
             Fk_Medical_Service = 0;
             Fk_Patient = 0;
             Date = Convert.ToDateTime("1900-01-01");
-            Hour = new TimeSpan(0, 0, 0);
+            Hour = "";
+            Option=0;
+            Canceled=false;
         }
         public Int32 Pk_Appointment_History { get; set; }
         public Int32 Fk_Medical_Service { get; set; }
+        public string Medical_Service_Name { get; set; }
+        public bool Can_Cancel { get; set; }
+        public bool Canceled { get; set; }
         public Int32 Fk_Patient { get; set; }
         public DateTime Date { get; set; }
-        public TimeSpan Hour { get; set; }
+        public string Hour { get; set; }
+        public int Option { get; set; }
     }
 }

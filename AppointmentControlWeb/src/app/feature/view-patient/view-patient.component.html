@@ -1,5 +1,6 @@
 <div class="d-flex justify-content-center">
     <div class="jumbotron jumbotron-fluid mt-3 p-5 col-md-6">
+
         <div class="row">
             <label class="gbl-title-primary text-center d-block">Patient info</label>
         </div>
@@ -32,46 +33,37 @@
             </div>
         </div>
         <div class="row">
-            <label class="gbl-title-secondary text-center d-block">Make appointment</label>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Date:</label>
-            </div>
-            <div class="col-md-9">
-                <input matInput [matDatepicker]="myDatepicker" readonly>
-                <mat-datepicker-toggle class="btn-date" [for]="myDatepicker"></mat-datepicker-toggle>
-                <mat-datepicker #myDatepicker></mat-datepicker>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Hour:</label>
-            </div>
-            <div class="col-md-9">
-                <input [ngxTimepicker]="picker">
-                <ngx-material-timepicker #picker></ngx-material-timepicker>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Medical Service:</label>
-            </div>
-            <div class="col-md-9">
 
-                <mat-form-field>
-                    <mat-select>
-                        <mat-option *ngFor="let entry of medicalService" [value]="entry.Pk_Medical_Service">
-                            {{entry.Name}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div *ngIf="appointmentList.length>0" style="width: 100%;" class="p-3">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th style="width: 30%;">Medical Service</th>
+                                <th style="width: 20%;">Date</th>
+                                <th style="width: 20%;">Time</th>
+                                <th style="width: 10%;">Status</th>
+                                <th style="width: 10%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let entry of appointmentList;">
+                                <td>{{entry.Medical_Service_Name}} </td>
+                                <td>{{entry.Date | date:'MM/dd/yyyy'}}</td>
+                                <td>{{entry.Hour | date:'shortTime'}}</td>
+                                <td><label *ngIf="entry.Canceled">Canceled</label><label *ngIf="!entry.Canceled">Active</label></td>
+                                <td>
+                                    <button [disabled]="!entry.Can_Cancel" (click)="onCancel(entry) " class="bnt-cancel"><span
+                                                class="material-icons">
+                                                cancel
+                                            </span>&nbsp;Cancel</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
         </div>
-
-
-        <button type="button" class="save-button mt-3">
-            SAVE
-         </button>
     </div>
 </div>

@@ -29,34 +29,7 @@ namespace appointmentControl.Backend.WepApi
         {
             configuration = iConfiguration;
         }
-        #region Region [Methods] 
-        [Route("List")]
-        [HttpPost]
-        public async Task<IActionResult> List([FromBody] Model.User model)
-        {
-            try
-            {
-                var message = new Message();
-                message.BusinessLogic = configuration.GetValue<string>("AppSettings:BusinessLogic:User");
-                message.Connection = configuration.GetValue<string>("ConnectionStrings:appointmentControl");
-                message.Operation = Operation.List;
-                message.MessageInfo = model.SerializeObject();
-                using (var businessLgic = new DoWorkService())
-                {
-                    var result = await businessLgic.DoWork(message);
-                    if (result.Status == Status.Failed)
-                    {
-                        return BadRequest(result.Result);
-                    }
-                    var list = result.DeSerializeObject<IEnumerable<Model.User>>(); 
-                    return Ok(list);
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.Ambiguous, new { ex = ex, param = model });
-            }
-        }
+        #region Region [Methods]  
         [Route("Get")]
         [HttpPost]
         public async Task<IActionResult> Get([FromBody] Model.User model)
@@ -83,34 +56,7 @@ namespace appointmentControl.Backend.WepApi
             {
                 return StatusCode((int)HttpStatusCode.Ambiguous, new { ex = ex, param = model });
             }
-        }
-        [Route("Save")]
-        [HttpPost]
-        public async Task<IActionResult> Save([FromBody] Model.User model)
-        {
-            try
-            {
-                var message = new Message();
-                message.BusinessLogic = configuration.GetValue<string>("AppSettings:BusinessLogic:User");
-                message.Connection = configuration.GetValue<string>("ConnectionStrings:appointmentControl");
-                message.Operation = Operation.Save;
-                message.MessageInfo = model.SerializeObject();
-                using (var businessLgic = new DoWorkService())
-                {
-                    var result = await businessLgic.DoWork(message);
-                    if (result.Status == Status.Failed)
-                    {
-                        return BadRequest(result.Result);
-                    }
-                    var resultModel = result.DeSerializeObject<Model.User>(); 
-                    return Ok(resultModel);
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.Ambiguous, new { ex = ex, param = model });
-            }
-        }
+        } 
         #endregion Region [Methods]
     }
 }

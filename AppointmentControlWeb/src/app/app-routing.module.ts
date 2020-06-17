@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path: 'view-patient',
         loadChildren: () => import('./feature/view-patient/view-patient.module').then(m => m.ViewPatientModule)
+      },
+      {
+        path: 'add-appointment',
+        loadChildren: () => import('./feature/add-appointment/add-appointment.module').then(m => m.AddAppointmentModule)
       }
     ]
   },

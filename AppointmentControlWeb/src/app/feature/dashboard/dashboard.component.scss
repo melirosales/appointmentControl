@@ -20,9 +20,11 @@
 .btn-eye {
     color: $primaryColor;
     border: transparent;
+    background-color: transparent;
 }
 
 .btn-eye:hover {
     color: #1f4e78b0;
+    background-color: transparent;
     border: transparent;
 }
